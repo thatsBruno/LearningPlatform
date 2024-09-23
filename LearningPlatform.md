@@ -174,16 +174,35 @@ public void submitAssessment(@PathVariable Long assessmentId, @RequestBody List<
     // Validate answers and grade assessment
 }
 ```
+Use Docker
+
+Step 1: Install Docker
+Download and install Docker Desktop from Docker's official website.
+Step 2: Pull PostgreSQL Docker Image
+Open a terminal and run:
+```
+bash
+docker pull postgres
+```
+Step 3: Run PostgreSQL Container
+Run the PostgreSQL container with the following command (replace your_password with a secure password):
+
+bash
+```
+docker run --name my_postgres -e POSTGRES_PASSWORD=your_password -p 5432:5432 -d postgres
+--name my_postgres: This names the container.
+-e POSTGRES_PASSWORD=your_password: Sets the password for the default postgres user.
+-p 5432:5432: Maps port 5432 of the container to port 5432 on your host machine.
+-d: Runs the container in detached mode.
+```
+Step 4: Access PostgreSQL
+You can connect to the database using the following command in a terminal:
+
+bash
+```
+psql -h localhost -U postgres
+```
+Enter the password you set earlier when prompted.
 10. Testing
 Write unit tests for your service and controller layers using JUnit.
 Use MockMvc to test the API endpoints.
-
-11. Optional Features
-Personalized Course Recommendations: You can use machine learning to recommend courses based on user preferences and past enrollments. You could integrate with Python or ML.NET for this.
-Certificate Generation: Automatically generate certificates for users who complete a course.
-Notifications: Implement email notifications using JavaMailSender when a user enrolls in or completes a course.
-
-12. Deployment
-Deploy your backend to platforms like Heroku, AWS, or Azure.
-For the frontend, if you’re using a modern frontend framework, deploy it on Netlify or Vercel.
-This structure will help you build a robust online learning platform and demonstrate various important skills in your portfolio!
