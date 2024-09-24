@@ -1,15 +1,16 @@
 package pt.thatsbruno.LearningPlatform.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Setter
-@Getter
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name="enrollmentTbl")
 public class Enrollment {
 
     @Id
@@ -28,16 +29,10 @@ public class Enrollment {
     private Double progress;  // Progress in percentage, e.g., 75.0
     private Boolean completed;  // Has the user completed the course?
 
-    // Constructors
-    public Enrollment() {}
-
-    public Enrollment(User user, Course course, LocalDate enrollmentDate) {
+    public Enrollment(User user, Course course, LocalDate now) {
         this.user = user;
         this.course = course;
-        this.enrollmentDate = enrollmentDate;
-        this.progress = 0.0;  // Initialize progress to 0%
-        this.completed = false;
+        this.enrollmentDate = now;
     }
-
 }
 
