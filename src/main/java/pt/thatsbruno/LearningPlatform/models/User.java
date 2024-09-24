@@ -17,11 +17,4 @@ public class User {
     private String email;
     private String role;  // Can be 'STUDENT', 'INSTRUCTOR', 'ADMIN'
 
-    public User(Long id, String role, String email, String password, String username) {
-        this.id = id;
-        this.role = role;
-        this.email = email;
-        this.password = password;
-        this.username = username;
-    }
 }
